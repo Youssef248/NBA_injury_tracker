@@ -29,14 +29,32 @@ document.addEventListener('DOMContentLoaded', () => {
     function displayPlayerData(data) {
         let html = '';
         for (const year in data) {
-            html += `<h2>${year}</h2>`;
-            html += '<table>';
-            html += '<tr><th>Date</th><th>Reason</th><th>Related Injury</th></tr>';
+            html += `<h2 class="year">${year}</h2>`;
+            html += '<div class="table-responsive">';
+            html += `<table id="${year}" class="table table-bordered table-striped mb-4">`;
+            html += '<thead><tr><th>Date</th><th>Reason</th><th>Related Injury</th></tr></thead>';
+            html += '<tbody>';
             data[year].allInactiveGames.forEach(game => {
                 html += `<tr><td>${game.date}</td><td>${game.reason}</td><td>${game.relatedInjury}</td></tr>`;
             });
+            html += '</tbody>';
             html += '</table>';
+            html += '</div>';
         }
         playerDataDiv.innerHTML = html;
+
+        // Add event listeners to each year heading
+        const yearHeadings = document.querySelectorAll('.year');
+        yearHeadings.forEach(heading => {
+            heading.addEventListener('click', () => {
+                const year = heading.textContent;
+                const table = document.getElementById(year);
+                if (table.style.display === 'none') {
+                    table.style.display = 'table';
+                } else {
+                    table.style.display = 'none';
+                }
+            });
+        });
     }
 });

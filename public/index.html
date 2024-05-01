@@ -5,32 +5,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NBA Injury Data</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        table {
-            border-collapse: collapse;
-            width: 100%;
-        }
-        th, td {
-            border: 1px solid #dddddd;
-            text-align: left;
-            padding: 8px;
-        }
-        th {
-            background-color: #f2f2f2;
+        .year {
+            cursor: pointer;
+            margin-bottom: 10px;
         }
     </style>
 </head>
 <body>
-    <h1>NBA Injury Data</h1>
-    <form id="playerForm">
-        <label for="firstName">First Name:</label>
-        <input type="text" id="firstName" name="firstName" required>
-        <label for="lastName">Last Name:</label>
-        <input type="text" id="lastName" name="lastName" required>
-        <button type="submit">Submit</button>
-    </form>
-    <div id="playerData"></div>
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">NBA Injury Data</h1>
+        <form id="playerForm" class="mb-4">
+            <div class="row g-3 align-items-center">
+                <div class="col-auto">
+                    <label for="firstName" class="col-form-label">First Name:</label>
+                </div>
+                <div class="col-auto">
+                    <input type="text" id="firstName" name="firstName" class="form-control" required>
+                </div>
+                <div class="col-auto">
+                    <label for="lastName" class="col-form-label">Last Name:</label>
+                </div>
+                <div class="col-auto">
+                    <input type="text" id="lastName" name="lastName" class="form-control" required>
+                </div>
+                <div class="col-auto">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </div>
+        </form>
+        <div id="playerData"></div>
+    </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
     <script src="app.js"></script>
 </body>
 </html>
