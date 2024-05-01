@@ -40,7 +40,7 @@ This Node.js application scrapes NBA player injury data from Fox Sports and Bask
 ## Usage
 
 1. Enter the first name and last name of the NBA player you want to retrieve injury data for. (Ex: LeBron James)
-2. Press the Enter key or submit the form.
+2. Submit the form.
 3. The application will fetch and process the data, displaying it in a table organized by year.
 
 ## Limitations
