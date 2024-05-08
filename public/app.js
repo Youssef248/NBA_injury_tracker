@@ -1,4 +1,3 @@
-// app.js
 document.addEventListener('DOMContentLoaded', () => {
     const playerForm = document.getElementById('playerForm');
     const firstNameInput = document.getElementById('firstName');
@@ -24,6 +23,8 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         const data = await response.json();
         displayPlayerData(data);
+        
+        localStorage.setItem('playerData', JSON.stringify(data));
     }
 
     function displayPlayerData(data) {
@@ -42,8 +43,10 @@ document.addEventListener('DOMContentLoaded', () => {
             html += '</div>';
         }
         playerDataDiv.innerHTML = html;
+        addYearClickListeners();
+    }
 
-        // Add event listeners to each year heading
+    function addYearClickListeners() {
         const yearHeadings = document.querySelectorAll('.year');
         yearHeadings.forEach(heading => {
             heading.addEventListener('click', () => {
@@ -54,7 +57,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 } else {
                     table.style.display = 'none';
                 }
+                heading.classList.add('year-click-animation');
+                setTimeout(() => {
+                    heading.classList.remove('year-click-animation');
+                }, 300); 
             });
         });
+    }
+
+    
+    const savedData = localStorage.getItem('playerData');
+    if (savedData) {
+        displayPlayerData(JSON.parse(savedData));
     }
 });

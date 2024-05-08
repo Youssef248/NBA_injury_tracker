@@ -3,10 +3,11 @@ const cheerio = require('cheerio');
 
 // Function to convert date format to YYYY-MM-DD
 function formatDate(dateStr) {
-    let [month, day, year] = dateStr.split('/');
-    year = '20' + year; // Assuming year is in two digits and 2000s
-    return `${year}-${month.padStart(2, '0')}-${day.padStart(2, '0')}`;
+    const [month, day, ...year] = dateStr.split('/');
+    const fullYear = '20' + year.join(''); 
+    return `${fullYear}-${month.padStart(2, '0')}-${day.padStart(2, '0')}`;
 }
+
 
 // Function to fetch injury data
 async function fetchInjuryData(firstName, lastName) {
