@@ -146,3 +146,6 @@ In deze lijst vindt u waar bepaalde vereisten in de code te vinden zijn. Houd er
 
 - `const { firstName, lastName } = req.body;` in `server.js` gebruikt destructuring om `firstName` en `lastName` uit `req.body` te halen.
 
+## Bronnen
+- Voor het ontwikkelen van deze app heb ik gebruik gemaakt van de [Web Advanced cursus](https://canvas.ehb.be/courses/33250/modules), de links van het [Extra lesmateriaal](https://canvas.ehb.be/courses/33250/pages/extra-lesmateriaal-zelfstudie?module_item_id=624677) & de [Coding Along Video Series](https://www.youtube.com/playlist?list=PLGsnrfn8XzXhJUyCxjyvMmHDD-HbL2pDy)
+
