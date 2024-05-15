@@ -90,7 +90,7 @@ In deze lijst vindt u waar bepaalde vereisten in de code te vinden zijn. Houd er
 
 #### Gebruiken van template literals:
 
-- `html += `<h2 class="year">${year}</h2>`;` en andere regels binnen `displayPlayerData` gebruiken template literals.
+- `displayPlayerData` gebruikt template literals. `html += `<h2 class="year">${year}</h2>`;`
 
 #### Iteration over een array:
 
