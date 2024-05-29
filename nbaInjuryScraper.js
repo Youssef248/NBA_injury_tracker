@@ -75,7 +75,7 @@ async function processPlayerData(firstName, lastName) {
         let injuryData = await fetchInjuryData(firstName, lastName);
         let playerData = {};
         
-        for (let year = 2018; year <= 2024; year++) {
+        for (let year = 2018; year <=  new Date().getFullYear(); year++) {
             let { allInactiveGames, injurySummary } = await processInactiveGames(injuryData, firstName, lastName, year);
             playerData[year] = { allInactiveGames, injurySummary };
         }
