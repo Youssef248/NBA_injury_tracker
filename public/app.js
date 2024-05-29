@@ -28,23 +28,44 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function displayPlayerData(data) {
-        let html = '';
+        playerDataDiv.innerHTML = '';
+    
         for (const year in data) {
-            html += `<h2 class="year">${year}</h2>`;
-            html += '<div class="table-responsive">';
-            html += `<table id="${year}" class="table table-bordered table-striped mb-4">`;
-            html += '<thead><tr><th>Date</th><th>Reason</th><th>Related Injury</th></tr></thead>';
-            html += '<tbody>';
+            const yearHeading = document.createElement('h2');
+            yearHeading.classList.add('year');
+            yearHeading.textContent = year;
+            const tableContainer = document.createElement('div');
+            tableContainer.classList.add('table-responsive');
+            const table = document.createElement('table');
+            table.id = year;
+            table.classList.add('table', 'table-bordered', 'table-striped', 'mb-4');
+            const thead = document.createElement('thead');
+            thead.innerHTML = `
+                <tr>
+                    <th>Date</th>
+                    <th>Reason</th>
+                    <th>Related Injury</th>
+                </tr>
+            `;
+            table.appendChild(thead);
+            const tbody = document.createElement('tbody');
             data[year].allInactiveGames.forEach(game => {
-                html += `<tr><td>${game.date}</td><td>${game.reason}</td><td>${game.relatedInjury}</td></tr>`;
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${game.date}</td>
+                    <td>${game.reason}</td>
+                    <td>${game.relatedInjury}</td>
+                `;
+                tbody.appendChild(row);
             });
-            html += '</tbody>';
-            html += '</table>';
-            html += '</div>';
+            table.appendChild(tbody);
+            tableContainer.appendChild(table);
+            playerDataDiv.appendChild(yearHeading);
+            playerDataDiv.appendChild(tableContainer);
         }
-        playerDataDiv.innerHTML = html;
         addYearClickListeners();
     }
+    
 
     function addYearClickListeners() {
         const yearHeadings = document.querySelectorAll('.year');
