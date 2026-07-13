@@ -1,151 +1,152 @@
 # NBA Player Injury Data Scraper
 
-Deze Node.js applicatie haalt NBA speler blessuregegevens op van [Fox Sports](https://www.foxsports.com/nba) en [Basketball Reference](https://www.basketball-reference.com/) websites. Het verzamelt gegevens over blessures en inactieve wedstrijden van een specifieke NBA-speler gedurende meerdere seizoenen.
+This Node.js application retrieves NBA player injury data from the [Fox Sports](https://www.foxsports.com/nba) and [Basketball Reference](https://www.basketball-reference.com/) websites. It collects information about injuries and inactive games for a specific NBA player across multiple seasons.
 
-## Functies
+## Features
 
-- Haalt NBA speler blessuregegevens op van de Fox Sports website.
-- Scrapet inactieve wedstrijdgegevens voor een speler van de Basketball Reference website.
-- Converteert datumformaten en vindt gerelateerde blessures voor elke inactieve wedstrijd.
-- Verwerkt en organiseert de gegevens per jaar.
-- Ondersteunt het ophalen van gegevens voor de jaren 2018 tot 2024.
+* Retrieves NBA player injury data from the Fox Sports website.
+* Scrapes inactive game data for a player from the Basketball Reference website.
+* Converts date formats and finds related injuries for each inactive game.
+* Processes and organizes the data by year.
+* Supports retrieving data for the years 2018 to 2024.
 
 ## Dependencies
 
-- [request-promise](https://www.npmjs.com/package/request-promise): Voor het maken van HTTP-verzoeken.
-- [cheerio](https://www.npmjs.com/package/cheerio): Voor het parseren van HTML en het extraheren van gegevens.
+* [request-promise](https://www.npmjs.com/package/request-promise): Used for making HTTP requests.
+* [cheerio](https://www.npmjs.com/package/cheerio): Used for parsing HTML and extracting data.
 
-## Installatie
+## Installation
 
-1. Kloon de repository:
+1. Clone the repository:
 
    ```bash
    gh repo clone Youssef248/NBA_injury_tracker
    ```
 
-2. Installeer de dependencies:
+2. Install the dependencies:
 
    ```bash
    npm install
    ```
 
-3. Start de applicatie:
+3. Start the application:
 
    ```bash
    node server.js
    ```
-   De server zal draaien op http://localhost:3000/
 
-## Gebruik
+   The server will run at http://localhost:3000/
 
-1. Voer de voornaam en achternaam van de NBA-speler in waarvan je de blessuregegevens wilt ophalen. (Bijv: LeBron James)
-2. Verzend het formulier.
-3. De applicatie haalt en verwerkt de gegevens en toont deze in een tabel georganiseerd per jaar.
+## Usage
 
-## Beperkingen
+1. Enter the first name and last name of the NBA player whose injury data you want to retrieve. (Example: LeBron James)
+2. Submit the form.
+3. The application retrieves and processes the data and displays it in a table organized by year.
 
-- De applicatie kan fouten tegenkomen als de structuur van de doelwebsites verandert.
-- Snelheidsbeperkingen of toegangsbeperkingen die door de websites worden opgelegd, kunnen van invloed zijn op het ophalen van gegevens.
+## Limitations
 
-## Vereisten
+* The application may encounter errors if the structure of the target websites changes.
+* Rate limits or access restrictions imposed by the websites may affect data retrieval.
 
-In deze lijst vindt u waar bepaalde vereisten in de code te vinden zijn. Houd er rekening mee dat sommige vereisten meerdere keren voorkomen en daarom niet elk optreden in deze lijst is opgenomen.
+## Requirements
+
+This list shows where certain requirements can be found in the code. Please note that some requirements occur multiple times and therefore not every occurrence is included in this list.
 
 ### index.html
 
-#### Formulier valideren:
+#### Form validation:
 
-  - HTML5 formulier validatie met de `required` attributen op de invoervelden `<input type="text" id="firstName" ... required>`
+* HTML5 form validation using the `required` attributes on the input fields `<input type="text" id="firstName" ... required>`
 
-#### Basis CSS Animatie:
+#### Basic CSS animation:
 
-  - CSS animatie gedefinieerd in de stylesheet `@keyframes yearClickAnimation { ... }`
+* CSS animation defined in the stylesheet `@keyframes yearClickAnimation { ... }`
 
-#### Gebruiken van een flexbox of CSS grid:
+#### Using Flexbox or CSS Grid:
 
-   - `display: flex; flex-direction: column; align-items: center; gap: 20px;`
+* `display: flex; flex-direction: column; align-items: center; gap: 20px;`
 
 ### app.js
 
-#### Elementen selecteren:
+#### Selecting elements:
 
-- `document.getElementById('playerForm')` selecteert het formulier.
-- `document.getElementById('firstName')` en `document.getElementById('lastName')` selecteren de invoervelden.
-- `document.getElementById('playerData')` selecteert de container voor de spelergegevens.
-- `document.querySelectorAll('.year')` selecteert alle elementen met de class "year".
+* `document.getElementById('playerForm')` selects the form.
+* `document.getElementById('firstName')` and `document.getElementById('lastName')` select the input fields.
+* `document.getElementById('playerData')` selects the container for the player data.
+* `document.querySelectorAll('.year')` selects all elements with the class `"year"`.
 
-#### Elementen manipuleren:
+#### Manipulating elements:
 
-- `playerDataDiv.innerHTML = html;` voegt de HTML voor de spelergegevens toe aan de container.
-- `heading.classList.add('year-click-animation');` en `heading.classList.remove('year-click-animation');` voegen en verwijderen een CSS-animatieclass aan een element.
+* `playerDataDiv.innerHTML = html;` adds the HTML for the player data to the container.
+* `heading.classList.add('year-click-animation');` and `heading.classList.remove('year-click-animation');` add and remove a CSS animation class from an element.
 
-#### Event aan een element koppelen:
+#### Attaching an event to an element:
 
-- `playerForm.addEventListener('submit', async (e) => { ... });` koppelt een submit event aan het formulier.
-- `heading.addEventListener('click', () => { ... });` koppelt een click event aan de jaar koppen.
+* `playerForm.addEventListener('submit', async (e) => { ... });` attaches a submit event to the form.
+* `heading.addEventListener('click', () => { ... });` attaches a click event to the year headings.
 
-#### Gebruiken van een constante:
+#### Using a constant:
 
-- `const playerForm`, `const firstNameInput`, `const lastNameInput`, `const playerDataDiv`, enz. definiëren constante variabelen.
+* `const playerForm`, `const firstNameInput`, `const lastNameInput`, `const playerDataDiv`, etc. define constant variables.
 
-#### Gebruiken van template literals:
+#### Using template literals:
 
-- `displayPlayerData` gebruikt template literals. ``html += `<h2 class="year">${year}</h2>`;``
+* `displayPlayerData` uses template literals. ``html += `<h2 class="year">${year}</h2>`;``
 
-#### Iteration over een array:
+#### Iterating over an array:
 
-- `data[year].allInactiveGames.forEach(game => { ... });` iterateert over een array van games.
+* `data[year].allInactiveGames.forEach(game => { ... });` iterates over an array of games.
 
 #### Arrow function:
 
-- `playerForm.addEventListener('submit', async (e) => { ... });` en `yearHeadings.forEach(heading => { ... });` gebruiken arrow functions.
+* `playerForm.addEventListener('submit', async (e) => { ... });` and `yearHeadings.forEach(heading => { ... });` use arrow functions.
 
 #### Callback function:
 
-- De functies die worden doorgegeven aan `addEventListener` zijn callback functies.
+* The functions passed to `addEventListener` are callback functions.
 
 #### Promise:
 
-- `const response = await fetch('/playerData', { ... });` in `fetchPlayerData` geeft een Promise.
+* `const response = await fetch('/playerData', { ... });` in `fetchPlayerData` returns a Promise.
 
 #### Consumer methods:
 
-- `.json()` method op de response (`const data = await response.json();`) consumeert de Promise.
+* The `.json()` method on the response (`const data = await response.json();`) consumes the Promise.
 
 #### Async & Await:
 
-- `async function fetchPlayerData(firstName, lastName) { ... }` en het gebruik van `await` binnen deze functie.
+* `async function fetchPlayerData(firstName, lastName) { ... }` and the use of `await` inside this function.
 
-#### Self executing function:
+#### Self-executing function:
 
-- `document.addEventListener('DOMContentLoaded', () => { ... });` functioneert als een self-executing function omdat de arrow function binnen de `DOMContentLoaded` event listener direct wordt uitgevoerd zodra het DOM volledig is geladen.
+* `document.addEventListener('DOMContentLoaded', () => { ... });` functions as a self-executing function because the arrow function inside the `DOMContentLoaded` event listener is executed immediately once the DOM has fully loaded.
 
-#### Fetch om data op te halen:
+#### Using Fetch to retrieve data:
 
-- `const response = await fetch('/playerData', { ... });` gebruikt `fetch` om data op te halen van de server.
+* `const response = await fetch('/playerData', { ... });` uses `fetch` to retrieve data from the server.
 
-#### JSON manipuleren en weergeven:
+#### Manipulating and displaying JSON:
 
-- `const data = await response.json();` haalt JSON data op.
-- `displayPlayerData(data);` manipuleert en toont de JSON data.
+* `const data = await response.json();` retrieves JSON data.
+* `displayPlayerData(data);` manipulates and displays the JSON data.
 
-#### Gebruik van LocalStorage:
+#### Using LocalStorage:
 
-- `localStorage.setItem('playerData', JSON.stringify(data));` slaat data op in LocalStorage.
-- `const savedData = localStorage.getItem('playerData');` haalt data op uit LocalStorage.
+* `localStorage.setItem('playerData', JSON.stringify(data));` stores data in LocalStorage.
+* `const savedData = localStorage.getItem('playerData');` retrieves data from LocalStorage.
 
 ### nbaInjuryScraper.js
 
 #### Spread & Rest operator:
 
-- `const [month, day, ...year] = dateStr.split('/');` in `nbaInjuryScraper.js` gebruikt de rest operator.
+* `const [month, day, ...year] = dateStr.split('/');` in `nbaInjuryScraper.js` uses the rest operator.
 
 ### server.js
 
 #### Destructuring:
 
-- `const { firstName, lastName } = req.body;` in `server.js` gebruikt destructuring om `firstName` en `lastName` uit `req.body` te halen.
+* `const { firstName, lastName } = req.body;` in `server.js` uses destructuring to extract `firstName` and `lastName` from `req.body`.
 
-## Bronnen
-- Voor het ontwikkelen van deze app heb ik gebruik gemaakt van de [Web Advanced cursus](https://canvas.ehb.be/courses/33250/modules), de links van het [Extra lesmateriaal](https://canvas.ehb.be/courses/33250/pages/extra-lesmateriaal-zelfstudie?module_item_id=624677), de [Coding Along Video Series](https://www.youtube.com/playlist?list=PLGsnrfn8XzXhJUyCxjyvMmHDD-HbL2pDy) & de [Node JS Documentatie](https://nodejs.org/docs/latest/api/)
+## Sources
 
+* While developing this app, I used the [Web Advanced course](https://canvas.ehb.be/courses/33250/modules), the links from the [Additional Course Material](https://canvas.ehb.be/courses/33250/pages/extra-lesmateriaal-zelfstudie?module_item_id=624677), the [Coding Along Video Series](https://www.youtube.com/playlist?list=PLGsnrfn8XzXhJUyCxjyvMmHDD-HbL2pDy), and the [Node.js Documentation](https://nodejs.org/docs/latest/api/).
